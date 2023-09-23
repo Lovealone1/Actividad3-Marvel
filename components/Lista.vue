@@ -12,7 +12,6 @@
     <script>
     import axios from 'axios'
     import Character from '../components/Personaje'
-    
     export default {
       // eslint-disable-next-line vue/multi-word-component-names
       name: 'Lista',

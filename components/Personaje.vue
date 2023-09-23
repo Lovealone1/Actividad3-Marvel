@@ -11,33 +11,29 @@
       </div>
     </div>
 
-    <div v-if="characterData" id="modal" class="modal-body">
-      <div style="margin: 4px">
-        <div>{{ character.description }}</div>
-        <div style="height: 8px;"></div>
+    <v-card v-if="characterData" class="character-card">
+      <v-card-title>
 
-        <div style="color:black">
-          <div>
-            Comics: {{ character.comics.available }},
-            Series: {{ character.series.available }}
-          </div>
-          <div>
-            Historias: {{ character.stories.available }},
-            Eventos: {{ character.events.available }}
-          </div>
+      </v-card-title>
+
+      <v-card-text>
+        <div>
+          <b>Comics:</b> {{ character.comics.available }},
+          <b>Series:</b> {{ character.series.available }}
+        </div>
+        <div>
+          <b>Historias:</b> {{ character.stories.available }},
+          <b>Eventos:</b> {{ character.events.available }}
         </div>
 
-        <div style="height: 8px;"></div>
-        <div>SOME EVENT NAMES:</div>
-
-        <div v-for="serie in characterSeries" :key="serie.name">
-          {{ serie.name }}
+        <div class="info-row">
+          <b>Otras participaciones:</b>
+          <ul>
+            <li v-for="serie in characterSeries" :key="serie.name">{{ serie.name }}</li>
+          </ul>
         </div>
-
-        <div style="height: 10px;"></div>
-
-      </div>
-    </div>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -85,24 +81,24 @@ export default {
 .container-col {
   display: flex;
   flex-direction: column;
-  margin: 6px;
+  margin: 5px;
 }
 
 #lignes {
   width: 250px;
   height: 300px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 #lignes:hover {
-  border: 2px solid #e92227;
+  border: 2px solid #525252;
 }
 
 #image {
   width: 100%;
   height: 100%;
   background-size: cover;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 0px 0px 0px 0px;
   border: 1px solid rgba(180, 180, 180, 0.781);
 }
 
@@ -111,7 +107,7 @@ export default {
   border: 1px solid rgba(180, 180, 180, 0.781);
   width: 100%;
   height: 80px;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 0px 0px;
 }
 
 h1 {
@@ -123,34 +119,24 @@ h1 {
 
 h1:hover {
   font-size: 25px;
-  color: #e92227;
+  color: #000000;
 }
 
-#modalName {
-  font-size: 25px;
-  text-align: center;
-  color: black;
-  height: 80px;
+.character-card {
+  max-width: 250px; /* Establece un ancho máximo */
+  margin: 20px auto; /* Centra la tarjeta y controla los márgenes */
 }
 
-#modal {
-  width: 250px;
-  height: auto;
-  font-size: 15px;
-  background-color: #f1f2f0;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-left: 6px;
-  border-radius: 10px 10px 10px 10px;
+.info-row ul {
+  list-style: none;
+  padding: 0;
 }
 
-button {
-  height: auto;
-  width: 100px;
-  background-color: #4796ea;
-  margin-bottom: 5px;
-  align-content: center;
-  text-decoration-color: white;
-  border-radius: 8px;
+.character-info {
+  padding: 16px; /* Ajusta el espacio interno de la v-card */
+}
+
+.character-info div, .character-info ul {
+  margin-bottom: 8px; /* Ajusta el espaciado entre los elementos de texto */
 }
 </style>
