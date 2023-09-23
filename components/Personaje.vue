@@ -36,15 +36,6 @@
 
         <div style="height: 10px;"></div>
 
-        <div>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            @click="toggleCharacterData"
-          >
-            Cerrar
-          </button>
-        </div>
       </div>
     </div>
   </div>
