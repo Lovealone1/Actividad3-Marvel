@@ -1,14 +1,14 @@
 <template>
   <div>
     <div id="lignes" class="container-col">
+      <div id="nom" class="container-row">
+        <h1 @click="toggleCharacterData">{{ character.name }}</h1>
+      </div>
       <div
         id="image"
         :style="{ backgroundImage: 'url(' + character.thumbnail.path + '.' + character.thumbnail.extension + ')' }"
         @click="toggleCharacterData"
       ></div>
-      <div id="nom" class="container-row">
-        <h1 @click="toggleCharacterData">{{ character.name }}</h1>
-      </div>
     </div>
 
     <v-card v-if="characterData" class="character-card">
@@ -53,7 +53,6 @@
 
 <script>
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "Personaje",
   props: {
     character: {
@@ -64,7 +63,7 @@ export default {
   data() {
     return {
       characterData: false,
-      dialog: false, // Renombramos a 'dialog'
+      dialog: false, 
     };
   },
   computed: {
@@ -149,8 +148,8 @@ h1:hover {
 }
 
 .character-card {
-  max-width: 250px; /* Establece un ancho máximo */
-  margin: 20px auto; /* Centra la tarjeta y controla los márgenes */
+  max-width: 250px; 
+  margin: 20px auto; 
 }
 
 .info-row ul {
@@ -159,10 +158,10 @@ h1:hover {
 }
 
 .character-info {
-  padding: 16px; /* Ajusta el espacio interno de la v-card */
+  padding: 16px; 
 }
 
 .character-info div, .character-info ul {
-  margin-bottom: 8px; /* Ajusta el espaciado entre los elementos de texto */
+  margin-bottom: 8px; 
 }
 </style>
