@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="lignes" class="container-col">
+    <div v-if="characterHasInfo" id="lignes" class="container-col">
       <div id="nom" class="container-row">
         <h1 @click="toggleCharacterData">{{ character.name }}</h1>
       </div>
@@ -85,6 +85,14 @@ export default {
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     };
   },
+  characterHasInfo() {
+      return (
+        this.character.comics.available > 0 ||
+        this.character.series.available > 0 ||
+        this.character.stories.available > 0 ||
+        this.character.events.available > 0
+      );
+    },
 },
   methods: {
     toggleCharacterData() {
