@@ -26,7 +26,7 @@ export default {
   },
 
   beforeCreate() {
-    axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=5bd987f4470c9f45b2dae9f51d1387db&hash=7c42b00f9898de246920fa7b29236598`)
+    axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=5bd987f4470c9f45b2dae9f51d1387db&hash=7c42b00f9898de246920fa7b29236598&limit=24`)
       .then((response) => {
         this.characters = response.data.data.results;
         console.log(response.data.data.results);
@@ -34,21 +34,15 @@ export default {
   },
 
   methods: {
-    // Método para actualizar la lista de personajes con los resultados de búsqueda
     actualizarLista(resultados) {
       this.characters = resultados;
     },
   },
 
-  // Escuchar el evento 'resultadosBusqueda' emitido por DefaultLayout
   created() {
     this.$root.$on('resultadosBusqueda', this.actualizarLista);
   },
 
-  // Dejar de escuchar el evento al destruir el componente
-  beforeDestroy() {
-    this.$root.$off('resultadosBusqueda', this.actualizarLista);
-  },
 };
 </script>
 
