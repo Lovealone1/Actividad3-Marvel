@@ -25,7 +25,7 @@
       </v-app-bar>
     </v-card>
     <v-card>
-      <!-- Contenido adicional que desees agregar -->
+
     </v-card>
     <v-main>
       <v-container>
@@ -60,23 +60,21 @@ export default {
   },
   methods: {
     async searchCharacters() {
-      // Verificar que haya al menos 4 caracteres antes de realizar la búsqueda
+
       if (this.searchQuery.length < 4) {
         console.log('Ingrese al menos 4 caracteres para buscar.');
         return;
       }
 
       try {
-        // Realiza la petición a la API de Marvel con el término de búsqueda
+
         const response = await fetch(`http://gateway.marvel.com/v1/public/characters?nameStartsWith=${this.searchQuery}&ts=1&apikey=5bd987f4470c9f45b2dae9f51d1387db&hash=7c42b00f9898de246920fa7b29236598`);
 
-        // Verifica si la petición fue exitosa (código de respuesta 200)
         if (response.ok) {
           const data = await response.json();
           console.log('Personajes encontrados:', data.data.results);
           this.$root.$emit('resultadosBusqueda', data.data.results);
-          // Aquí puedes manejar la respuesta y cargar los personajes encontrados
-          // por ejemplo, actualizar una lista de personajes en tu componente
+
         } else {
           console.error('Error al buscar personajes:', response.statusText);
         }
@@ -111,6 +109,6 @@ export default {
 }
 
 .search-btn {
-  margin-left: 230px; /* Ajusta el margen izquierdo según sea necesario */
+  margin-left: 230px; 
 }
 </style>
