@@ -11,6 +11,14 @@
       ></div>
     </div>
 
+    <v-progress-circular
+      v-if="loading"
+      indeterminate
+      color="#EF9A9A"
+      size="70"
+      width="7"
+    ></v-progress-circular>
+
     <v-card v-if="characterData" class="character-card">
       <v-card-title>
 
@@ -63,7 +71,8 @@ export default {
   data() {
     return {
       characterData: false,
-      dialog: false, 
+      dialog: false,
+      loading: false, // Variable para controlar la visibilidad del v-progress-circular
     };
   },
   computed: {
@@ -76,16 +85,16 @@ export default {
       return this.character.series.items.slice(0, 3);
     },
     containerColStyle() {
-    return {
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    };
-  },
-  containerRowStyle() {
-    return {
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    };
-  },
-  characterHasInfo() {
+      return {
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      };
+    },
+    containerRowStyle() {
+      return {
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      };
+    },
+    characterHasInfo() {
       return (
         this.character.comics.available > 0 ||
         this.character.series.available > 0 ||
@@ -93,10 +102,16 @@ export default {
         this.character.events.available > 0
       );
     },
-},
+  },
   methods: {
-    toggleCharacterData() {
+    async toggleCharacterData() {
+      this.loading = true; // Mostrar v-progress-circular al hacer clic
+
+      // Simula una operación asincrónica (reemplaza con tu lógica real)
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
       this.characterData = !this.characterData;
+      this.loading = false; // Ocultar v-progress-circular después de cargar
     },
   },
 };

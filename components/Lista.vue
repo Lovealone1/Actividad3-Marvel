@@ -26,9 +26,11 @@ export default {
   },
 
   beforeCreate() {
-    axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=5bd987f4470c9f45b2dae9f51d1387db&hash=7c42b00f9898de246920fa7b29236598&limit=27`)
+    axios.get(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=5bd987f4470c9f45b2dae9f51d1387db&hash=7c42b00f9898de246920fa7b29236598&limit=32`)
       .then((response) => {
-        this.characters = response.data.data.results;
+        this.characters = response.data.data.results.filter(characters => {
+          return !characters.thumbnail.path.includes("image_not_available");
+        });
         console.log(response.data.data.results);
       });
   },
